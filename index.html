@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to TripTastic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+         <!-- Navigation Menu -->
+        <header>
+            <div class="main-container">
+                <nav>
+                    <div class="brand-logo">
+                        TripTastic
+                    </div>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Book</a></li>
+                        <li>
+                            <a href="#">Packages</a>
+                            <ul class="dropdown">
+                                <li><a href="#">United States</a></li>
+                                <li><a href="#">India</a></li>
+                                <li><a href="#">France</a></li>
+                                <li><a href="#">Germany</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                    <div class="auth-buttons">
+                        <a href="#login" class="login-btn" onclick="openLogin()">Login</a>
+                        <a href="#register" class="register-btn" onclick="openRegister()">Register</a>
+                    </div>
+                </nav>
+                <!-- HTML -->
+                
+
+                <div id="register" class="modal call_action_modal" style="display: none;">
+                    <div class="flex-container-popup">
+                        <article>
+                            <img style="object-fit: cover;" class="lazyload" src="images/lets-travel.webp" loading="lazy" alt="Register">
+                        </article>
+                        <article>
+                            <h3>Register</h3>
+                            <form id="registerForm" class="popup-form-call_action">
+                                <div class="input"><input type="text" placeholder="Full Name" id="fullName" class="form-control"></div>
+                                <div class="input"><input type="text" placeholder="Contact Number" id="contact" class="form-control"></div>
+                                <div class="input"><input type="date" placeholder="Date of Birth" id="dob" class="form-control"></div>
+                                <div class="input"><input type="email" placeholder="Email" id="email" class="form-control"></div>
+                                <div class="input"><input type="password" placeholder="Password" id="password" class="form-control"></div>
+                                <div class="input"><input type="password" placeholder="Confirm Password" id="confirmPassword" class="form-control"></div>
+                                <div class="input">
+                                    <select id="gender" class="form-control">
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div><button type="submit">Register</button></div>
+                                <a href="#login" onclick="closeRegister(); openLogin();">Already have an Account? Login</a>
+                            </form>
+                            <span class="close-modal" onclick="closeRegister()">X</span>
+                        </article>
+                    </div>
+                </div>
+
+                <div id="login" class="modal call_action_modal" style="display: none;">
+                    <div class="flex-container-popup">
+                        <article>
+                            <img style="object-fit: cover;" class="lazyload" src="images/lets-travel.webp" loading="lazy" alt="Login">
+                        </article>
+                        <article>
+                            <h3>Login</h3>
+                            <form id="loginForm" class="popup-form-call_action" onsubmit="return validateLogin()">
+                                <div class="input"><input type="email" placeholder="Email" id="loginEmail"></div>
+                                <div class="input"><input type="password" placeholder="Password" id="loginPassword"></div>
+                                <div><button type="submit">Login</button></div>
+                                <a href="#register" onclick="closeLogin(); openRegister();">Don't have an Account? Register</a>
+                            </form>
+                            <span class="close-modal" onclick="closeLogin()">X</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+       
+        
+        <!-- Background Image Section -->
+        <section class="background-image">
+            <div class="background-content">
+                <h1>Welcome to TripTastic</h1>
+                <h2 id="place-name">Visit India</h2>
+                <div class="common-btn"><a href="#">Book Now</a></div>
+            </div>
+        </section>
+
+
+        <!-- Two Sections: Image and Form -->
+         <section class="image-form-wrapper">
+            <div class="main-container">
+                <div class="row">
+                    <!-- Left Column: Image -->
+                    <div class="column">
+                        <img src="images/travel.jpg" alt="Brand or Company Logo" style="width: 100%; border-radius: 5px;">
+                    </div>
+                
+                    <!-- Right Column: Form -->
+                    <div class="column form-section">
+                        <form id="bookingForm">
+                            <label for="destination">Where to</label>
+                            <select id="destination" required>
+                                <option value="">Select Destination</option>
+                                <option value="India">India</option>
+                                <option value="United States">United States</option>
+                                <option value="France">France</option>
+                                <option value="Germany">Germany</option>
+                            </select>
+                        
+                            <label for="persons">How Many Persons</label>
+                            <input type="number" id="persons" min="1" max="10" required>
+                        
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" required>
+                        
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate" required>
+                        
+                            <label for="description">Description</label>
+                            <textarea id="description" minlength="50" maxlength="500" required></textarea>
+                        
+                            <button type="submit">Book Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+         </section>
+     
+        <!-- Package Gallery Section -->
+        <div class="package-section-wrapper">
+            <div class="main-container">
+                <div class="heading">
+                    <h2>Packages</h2>
+                </div>
+                <div class="package-gallery">
+                    <div class="package-card">
+                        <img src="images/paris.jpg" alt="Package 1">
+                        <h3>Paris, France</h3>
+                        <p>Eiffel Tower, Louvre Museum</p>
+                        <p>Price: $1500</p>
+                        <p>Rating: 4.5/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <div class="package-card">
+                        <img src="images/new-york-city.jpg" alt="Package 2">
+                        <h3>New York, USA</h3>
+                        <p>Statue of Liberty, Central Park</p>
+                        <p>Price: $2000</p>
+                        <p>Rating: 4.7/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <div class="package-card">
+                        <img src="images/tokyo.jpg" alt="Package 3">
+                        <h3>Tokyo, Japan</h3>
+                        <p>Mt. Fuji, Shibuya Crossing</p>
+                        <p>Price: $1800</p>
+                        <p>Rating: 4.6/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="package-card">
+                        <img src="images/London.jpeg" alt="Package 4">
+                        <h3>London, UK</h3>
+                        <p>Big Ben, Tower Bridge</p>
+                        <p>Price: $1600</p>
+                        <p>Rating: 4.5/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <div class="package-card">
+                        <img src="images/sydney.jpg" alt="Package 5">
+                        <h3>Sydney, Australia</h3>
+                        <p>Opera House, Bondi Beach</p>
+                        <p>Price: $1700</p>
+                        <p>Rating: 4.4/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <div class="package-card">
+                        <img src="images/rome.webp" alt="Package 6">
+                        <h3>Rome, Italy</h3>
+                        <p>Colosseum, Vatican</p>
+                        <p>Price: $1600</p>
+                        <p>Rating: 4.6/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="package-card">
+                        <img src="images/dubai.webp" alt="Package 7">
+                        <h3>Dubai, UAE</h3>
+                        <p>Burj Khalifa, Desert Safari</p>
+                        <p>Price: $1900</p>
+                        <p>Rating: 4.8/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <div class="package-card">
+                        <img src="images/bangkok.jpg" alt="Package 8">
+                        <h3>Bangkok, Thailand</h3>
+                        <p>Grand Palace, Floating Market</p>
+                        <p>Price: $1400</p>
+                        <p>Rating: 4.3/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                    <div class="package-card">
+                        <img src="images/Cairo.jpg" alt="Package 9">
+                        <h3>Cairo, Egypt</h3>
+                        <p>Pyramids of Giza, Sphinx</p>
+                        <p>Price: $1500</p>
+                        <p>Rating: 4.7/5</p>
+                        <div class="common-btn"><a href="#">Book Now</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+
+        <div class="services-section-wrapper">
+            <div class="main-container">
+                <div class="services-section">
+                    <div class="heading">
+                        <h2>Our Services</h2>
+                    </div>
+                    <div class="services">
+                        <div class="service-card">
+                            <h3>Affordable Hotels</h3>
+                            <p>Stay in budget-friendly hotels while traveling the world.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Food & Drinks</h3>
+                            <p>Enjoy local delicacies and global cuisines.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Safety Guides</h3>
+                            <p>Safety tips and guides for worry-free travel experiences.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>24/7 Customer Support</h3>
+                            <p>We're available round the clock for any assistance.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Luxury Packages</h3>
+                            <p>Experience ultimate comfort with our luxury travel packages.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Adventure Tours</h3>
+                            <p>Adrenaline-pumping tours for thrill-seekers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="main-container">
+                <div class="gallery-container">
+                    <div class="box a">
+                        <img src="./images/bangkok.jpg" alt="image">
+                    </div>
+                    <div class="box b">
+                        <img src="./images/Cairo.jpg" alt="image">
+                    </div>
+                    <div class="box c">
+                        <img src="./images/dubai.webp" alt="image">
+                    </div>
+                    <div class="box d">
+                        <img src="./images/London.jpeg" alt="image">
+                    </div>
+                    <div class="box e">
+                        <img src="./images/new-york-city.jpg" alt="image">
+                    </div>
+                    <div class="box f">
+                        <img src="./images/paris.jpg" alt="image">
+                    </div>
+                    <div class="box g">
+                        <img src="./images/rome.webp" alt="image">
+                    </div>
+                    <div class="box h">
+                        <img src="./images/sydney.jpg" alt="image">
+                    </div>
+                    <div class="box i">
+                        <img src="./images/lets-travel.webp" alt="image">
+                    </div>
+                    <div class="box j">
+                        <img src="./images/lets-travel.jpeg" alt="image">
+                    </div>
+                    <div class="box j">
+                        <img src="./images/tokyo.jpg" alt="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-us-wrapper">
+            <div class="main-container">
+                <div class="inner-about-us-wrapper">
+                    <div class="about-us-content">
+                        <h2>About Us</h2>
+                <p>Welcome to TripTastic, your trusted travel partner since 2010! We offer a range of curated travel packages to meet all your needs. Whether you seek adventure, relaxation, or cultural exploration, we ensure a memorable journey.</p>
+                <p>We’re committed to providing top-notch services, ensuring safety, comfort, and unforgettable experiences for all our clients.</p>
+
+                    </div>
+                    <div class="about-us-image">
+                        <img src="./images/lets-travel.jpeg" alt="about image" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-wrapper">
+            <div class="main-container">
+                <div class="inner-footer">
+                    <div class="footer-logo">
+                        <img style="width: 100px;" src="images/logo.webp" alt="logo">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis eligendi quaerat consequatur, ex minus, amet dolorum qui dignissimos possimus facere molestiae ipsa commodi maxime enim adipisci accusamus iste necessitatibus rem!</p>
+                    </div>
+                    <div class="footer-logo">
+                        <h3>Quicklinks</h3>
+                        <ul>
+                            <li>Home</li>
+                            <li>About Us</li>
+                            <li>Gallery</li>
+                            <li>Contact Us</li>
+                            <li>Sitemap</li>
+                        </ul>
+                    </div>
+                    <div class="footer-logo">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><a href="javascript:;">Phone</a></li>
+                            <li><a href="javascript:;">Email</a></li>
+                            <li><a href="javascript:;">LinkedIn</a></li>
+                            <li><a href="javascript:;">Youtube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="booter-footer-wrapper">
+            <div class="main-container">
+                <div class="inner-bottom-footer">
+                    <p>Copyright ©2024, All Rights Reserved, Jain University</p>
+                    <p>Website Design & Developed by: Homshree</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script.js"></script>
+</body>
+</html>
